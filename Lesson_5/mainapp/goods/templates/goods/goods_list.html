@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-4">
+            <table class="table table-bordered">
+                <thead>
+                <tr class="table-primary">
+                    <th>Категория товара</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="{% url 'goods:index' %}"
+                           class="list-group-item">Все категории</a>
+                    </td>
+                </tr>
+                {% for category in categories %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'goods:categories' category.id %}"
+                           class="list-group-item">{{ category.name }}</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-lg-4">
+            <table class="table table-bordered">
+                <thead>
+                <tr class="table-primary">
+                    <th>Название</th>
+                    <th>Дата поступления</th>
+                    <th>Цена</th>
+                    <th>Единица измерения</th>
+                    <th>Поставщик</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in object_list %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.receipt_date }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.unit }}</td>
+                        <td>{{ product.vendor_name }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
