@@ -6,5 +6,5 @@ app_name = 'products'
 
 urlpatterns = [
     path('', GoodListView.as_view(), name='index'),
-    # path('category/<int:category_id>/', PGoodListView.as_view(), name='categories'),
+    path('category/<int:category_id>/', GoodListView.as_view(), name='categories'),
 ]
